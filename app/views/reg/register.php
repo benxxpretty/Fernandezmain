@@ -5,259 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
+    body, section {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #fbcfe8, #fce7f3, #f9a8d4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2070&q=80')
-                no-repeat center center;
-    background-size: cover;
-    opacity: 0.15;
-    z-index: -1;
-}
+    .login {
+      background: white;
+      padding: 50px 40px;
+      width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border: 1px solid #f9a8d4;
+    }
 
-.glass-effect {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-}
+    .login h2 {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 600;
+      color: #db2777;
+      margin-bottom: 25px;
+    }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
+    .login input {
+      width: 100%;
+      padding: 14px 20px;
+      margin-bottom: 18px;
+      font-size: 1.05em;
+      border-radius: 8px;
+      border: 1px solid #fbcfe8;
+      background: #fdf2f8;
+      color: #a21caf;
+      outline: none;
+    }
 
-.header-gradient {
-    background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
-}
+    .login input::placeholder {
+      color: #d63384;
+    }
 
-.btn-primary {
-    background: linear-gradient(135deg, #6dd5fa, #2980b9);
-    transition: all 0.3s ease;
-    color: white;
-}
+    .password-box {
+      position: relative;
+    }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
-}
+    .password-box i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #d63384;
+    }
 
-.form-input {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(41, 128, 185, 0.2);
-    transition: all 0.3s ease;
-}
+    #btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2em;
+      font-weight: 500;
+      border: none;
+      border-radius: 10px;
+      background: #ec4899;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.form-input:focus {
-    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
-    border-color: #2980b9;
-    background: rgba(255, 255, 255, 0.95);
-}
+    #btn:hover {
+      background: #db2777;
+    }
 
-.floating-icon {
-    animation: float 3s ease-in-out infinite;
-}
+    .group {
+      text-align: center;
+      margin-top: 10px;
+    }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
+    .group a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-.image-container {
-    background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 200px;
-}
-
-.login-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #6dd5fa, #2980b9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;
-    box-shadow: 0 8px 25px rgba(41, 128, 185, 0.3);
-}
-
-.error {
-    color: red;
-}
-</style>
-
-</head>
-
-<body class="min-h-screen p-4 md:p-6 relative">
-
-    <!-- Floating decorative elements -->
-    <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-blue-400 opacity-20 floating-icon"></div>
-    <div class="absolute bottom-20 right-10 w-16 h-16 rounded-full bg-red-400 opacity-20 floating-icon" style="animation-delay: 1s;"></div>
-    <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-yellow-400 opacity-20 floating-icon" style="animation-delay: 2s;"></div>
-
-    <div class="relative w-full max-w-3xl mx-auto rounded-2xl glass-effect p-4">
-
-        <!-- Header -->
-        <header class="flex flex-col md:flex-row justify-between items-center gap-4 py-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="p-2 rounded-full bg-white bg-opacity-20">
-                    <i class="fas fa-user-plus text-2xl text-white"></i>
-              <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2070&q=80')
-                no-repeat center center;
-    background-size: cover;
-    opacity: 0.15;
-    z-index: -1;
-}
-
-.glass-effect {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-}
-
-.form-container {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.header-gradient {
-    background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #6dd5fa, #2980b9);
-    transition: all 0.3s ease;
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
-}
-
-.form-input {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(41, 128, 185, 0.2);
-    transition: all 0.3s ease;
-}
-
-.form-input:focus {
-    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
-    border-color: #2980b9;
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.floating-icon {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.image-container {
-    background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 200px;
-}
-
-.login-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #6dd5fa, #2980b9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;
-    box-shadow: 0 8px 25px rgba(41, 128, 185, 0.3);
-}
-
-.error {
-    color: red;
-}
-</style>
-
-</head>
-
-<body class="min-h-screen p-4 md:p-6 relative">
-
-    <!-- Floating decorative elements -->
-    <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-blue-400 opacity-20 floating-icon"></div>
-    <div class="absolute bottom-20 right-10 w-16 h-16 rounded-full bg-red-400 opacity-20 floating-icon" style="animation-delay: 1s;"></div>
-    <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-yellow-400 opacity-20 floating-icon" style="animation-delay: 2s;"></div>
-
-    <div class="relative w-full max-w-3xl mx-auto rounded-2xl glass-effect p-4">
-
-        <!-- Header -->
-        <header class="flex flex-col md:flex-row justify-between items-center gap-4 py-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="p-2 rounded-full bg-white bg-opacity-20">
-                    <i class="fas fa-user-plus text-2xl text-white"></i>
-                </div>
-                <div>
-                   
-        </header>
-        </header>
+    .group a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <section>

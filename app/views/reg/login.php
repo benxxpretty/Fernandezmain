@@ -8,101 +8,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-    body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #c6e6ff, #8ec5fc, #6dd5fa);
-        min-height: 100vh;
-        position: relative;
-        overflow-x: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
 
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=2070&q=80')
-                    no-repeat center center;
-        background-size: cover;
-        opacity: 0.15;
-        z-index: -1;
+    body, html {
+      width: 100%;
+      height: 100%;
     }
 
-    .glass-effect {
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(15px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #fbcfe8, #fce7f3, #f9a8d4);
     }
 
-    .form-container {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+    .login {
+      background: white;
+      padding: 50px 40px;
+      width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border: 1px solid #f9a8d4;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
 
-    .header-gradient {
-        background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
+    .login h2 {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 600;
+      color: #db2777;
+      margin-bottom: 10px;
     }
 
-    .btn-primary {
-        background: linear-gradient(135deg, #6dd5fa, #2980b9);
-        transition: all 0.3s ease;
-        color: white;
+    .inputBox {
+      position: relative;
+      margin-bottom: 15px;
     }
 
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+    .inputBox input {
+      width: 100%;
+      padding: 15px 45px 15px 20px;
+      font-size: 1.1em;
+      color: #a21caf;
+      border-radius: 8px;
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      outline: none;
     }
 
-    .form-input {
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(41, 128, 185, 0.2);
-        transition: all 0.3s ease;
+    .inputBox ::placeholder {
+      color: #d63384;
     }
 
-    .form-input:focus {
-        box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
-        border-color: #2980b9;
-        background: rgba(255, 255, 255, 0.95);
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 1.1em;
+      color: #d63384;
     }
 
-    .floating-icon {
-        animation: float 3s ease-in-out infinite;
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: #ec4899;
+      color: #fff;
+      font-size: 1.15em;
+      font-weight: 500;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
+    button:hover {
+      background: #db2777;
     }
 
-    .login-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #6dd5fa, #2980b9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 10px;
-        box-shadow: 0 8px 25px rgba(41, 128, 185, 0.3);
+    .group {
+      text-align: center;
     }
 
-    .error {
-        color: red;
+    .group a {
+      font-size: 1em;
+      color: #d63384;
+      font-weight: 500;
+      text-decoration: none;
     }
-</style>
+
+    .group a:hover {
+      text-decoration: underline;
+    }
+
+    .error-box {
+      background: rgba(255,0,0,0.08);
+      color: #db2777;
+      padding: 10px;
+      border: 1px solid #db2777;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
   <section>
